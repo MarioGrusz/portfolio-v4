@@ -1,0 +1,80 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+$number-size: 17.5rem;
+$tablet-number-size: 15rem;
+$mobile-number-size: 10rem;
+
+$font-size-default: 8rem;
+
+.projects-counter {
+  margin-top: 4rem;
+  margin-left: 1rem;
+  &__number-row {
+    display: block;
+    width: 100%;
+  }
+
+  &__number-outer {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    flex-direction: row;
+    font-weight: 400;
+    font-size: $font-size-default;
+    line-height: 1;
+
+    @include respond-to("large") {
+      font-size: 10rem;
+    }
+
+    @include respond-to("extra-large") {
+      font-size: 12rem;
+    }
+
+    @include respond-to("2extra-large") {
+      font-size: 15rem;
+    }
+  }
+
+  &__number-box {
+    display: inline-flex;
+    overflow: hidden;
+    align-items: flex-start;
+    justify-content: flex-start;
+    height: $font-size-default;
+
+    @include respond-to("large") {
+      height: 10rem;
+    }
+
+    @include respond-to("extra-large") {
+      height: 12rem;
+    }
+
+    @include respond-to("2extra-large") {
+      height: 15rem;
+    }
+  }
+
+  &__number {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    justify-content: flex-start;
+    flex-direction: row;
+  }
+
+  &__dot {
+    margin-left: -4rem;
+    color: black;
+  }
+}
+
+ul,
+li {
+  list-style: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

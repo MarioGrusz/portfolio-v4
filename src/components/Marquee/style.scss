@@ -1,0 +1,83 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.marquee {
+  width: 90%;
+  grid-column-gap: 0.1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  display: flex;
+  overflow: hidden;
+  margin-inline: auto;
+  position: relative;
+
+  &__content {
+    min-width: fit-content;
+    grid-column-gap: 0.1rem;
+    flex: none;
+    justify-content: space-around;
+    display: flex;
+  }
+
+  &__text-block,
+  .text-block {
+    color: $color-black-second;
+    text-transform: uppercase;
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1;
+
+    span:nth-child(2),
+    span:nth-child(4) {
+      color: #bab8b7;
+      font-weight: 900;
+    }
+
+    @include respond-to("medium") {
+      font-size: 5rem;
+    }
+
+    @include respond-to("extra-large") {
+      font-size: 8rem;
+    }
+  }
+
+  .element-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 5%;
+    z-index: 10;
+
+    background: linear-gradient(to right, #ffffff, transparent);
+  }
+
+  .element-back {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 5%;
+    z-index: 10;
+
+    background: linear-gradient(to left, #ffffff, transparent);
+  }
+}
+
+.scroll {
+  animation: scroll 12s linear infinite;
+}
+
+.reverse {
+  animation-direction: reverse;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-100% - 0.1rem));
+  }
+}

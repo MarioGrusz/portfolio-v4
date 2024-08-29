@@ -1,0 +1,236 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.about-me {
+  min-height: fit-content;
+  overflow-y: auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding-bottom: $section-gap-default;
+  position: relative;
+
+  &__container {
+    min-height: fit-content;
+    width: $container-min-width-default;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    padding: 0 1rem;
+
+    border-radius: $border-radius-default;
+
+    @include respond-to("small") {
+      gap: 2.5rem;
+      padding: 3rem;
+    }
+
+    @include respond-to("large") {
+      flex-direction: row;
+    }
+
+    @include respond-to("extra-large") {
+      padding: 3rem 6rem;
+    }
+
+    @include respond-to("2extra-large") {
+      padding: 3rem 5rem;
+    }
+  }
+
+  &__header {
+    height: 50vh;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 2rem; //8rem
+
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  &__description {
+    flex: 3;
+    display: flex;
+    justify-content: center;
+
+    @include respond-to("extra-large") {
+      margin: 100px 0;
+    }
+  }
+
+  &__body {
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    position: relative;
+
+    .mask {
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+
+      margin-right: 15px;
+      text-align: center;
+    }
+
+    .mask span {
+      display: inline-block;
+      transform: translateY(100%);
+      opacity: 0;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+      font-size: 1.5rem;
+      line-height: 1.4;
+
+      @include respond-to("small") {
+        font-size: 2rem;
+      }
+
+      @include respond-to("extra-large") {
+        font-size: 2.3rem;
+      }
+    }
+
+    .description span {
+      font-size: 1.3rem;
+      color: $color-grey-darker;
+
+      @include respond-to("small") {
+        font-size: 1.6rem;
+      }
+      @include respond-to("extra-large") {
+        font-size: 1.8rem;
+      }
+    }
+
+    .open span {
+      animation: slideUp 0.8s forwards, fadeIn 0.8s forwards;
+    }
+
+    .open-delayed span {
+      animation: slideUp 1s 0.3s forwards, fadeIn 1s 0.3s forwards;
+    }
+
+    .close span {
+      animation: slideDown 0.5s forwards, fadeOut 0.5s forwards;
+    }
+  }
+
+  &__svg {
+    transform-origin: center center;
+    border-radius: 50%;
+
+    width: 13rem;
+    height: 13rem;
+    position: relative;
+    background-color: $color-yellow-green;
+    animation: rotateText 15s linear infinite;
+    margin-bottom: 3rem;
+
+    @include respond-to("small") {
+      width: 14rem;
+      height: 14rem;
+    }
+
+    @include respond-to("extra-large") {
+      margin: 100px 0;
+    }
+
+    .monster-image {
+      background-image: url(../../assets/monster.png);
+      background-position: 50% 40%;
+      background-repeat: no-repeat;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    svg {
+      height: 10rem;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+
+      width: 10rem;
+      z-index: 1;
+    }
+
+    textPath {
+      letter-spacing: 0.59em;
+
+      font-size: 0.7rem;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 0.1em;
+      fill: black;
+    }
+  }
+}
+
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes rotateText {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

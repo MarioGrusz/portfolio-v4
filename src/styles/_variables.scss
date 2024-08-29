@@ -1,0 +1,40 @@
+@import "./mixins";
+
+//Containers Heights
+$menu-container-height: 2vh;
+$hero-container-height: 100vh;
+$about-me-container-height: 100vh;
+$projects-container-height: 100vh;
+$footer-container-height: 100vh;
+
+$round-element-hight: 35px;
+$round-element-padding: 5px 1px;
+
+/* Define SCSS Variables */
+$color-black: #000;
+$color-black-second: #2a2c2d;
+$color-white: #fff;
+$color-white-second: #f1f1f1;
+$color-grey-light: #d3d3d3;
+$color-grey-medium: #c6c6c6;
+$color-grey-dark: #b3b3b3;
+$color-grey-darker: #747474;
+$color-highlight: #879f87;
+$color-yellow-green: #c3ff56;
+
+$background-color: #ffffff;
+
+$font-size-small: 1.1rem;
+$font-size-medium: 1.25rem;
+$font-size-large: 2.5rem;
+$font-size-xlarge: 5rem;
+
+$line-height-default: 1.6;
+$line-height-tight: 1;
+
+$border-radius-default: 20px; //8px
+$border-radius-button: 2.5rem;
+
+$section-gap-default: 3rem;
+
+$container-min-width-default: 95%;

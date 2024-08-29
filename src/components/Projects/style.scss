@@ -1,0 +1,255 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+$element-height: 4rem;
+$margin-padding: 0.5rem;
+
+.projects {
+  min-height: fit-content;
+  color: $color-white-second;
+  margin-top: 3.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: $section-gap-default;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 10px;
+    border-radius: $border-radius-default;
+    width: $container-min-width-default;
+    padding: 1rem 0;
+    position: relative;
+
+    @include respond-to("medium") {
+      grid-template-columns: repeat(12, 1fr);
+      grid-column-gap: 10px;
+    }
+
+    @include respond-to("large") {
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__project-details {
+    grid-column: 1 / 7;
+    min-height: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    @include respond-to("medium") {
+      grid-column: 1 / 6;
+    }
+
+    @include respond-to("large") {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 5rem;
+    }
+  }
+
+  &__text-wrapper {
+    grid-column: 1 / 7;
+    width: fit-content;
+    padding: 0 1rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+
+    .title {
+      font-size: 3.5rem;
+      font-weight: 900;
+
+      @include respond-to("medium") {
+        font-size: 3rem;
+      }
+      @include respond-to("extra-large") {
+        font-size: 4rem;
+      }
+    }
+    .description {
+      color: $color-grey-darker;
+    }
+  }
+
+  &__image-wrapper {
+    overflow: hidden;
+    grid-column: 1 / 7;
+
+    margin: 0 auto;
+    --aspect-ratio: 1;
+    padding-bottom: calc(80% / (var(--aspect-ratio)));
+
+    max-width: calc(100% - 2rem);
+    will-change: transform;
+    border-radius: 1rem;
+
+    width: 100%;
+
+    @include respond-to("medium") {
+      grid-column: 6 / 13;
+      margin-top: 7rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__image {
+    --overflow: 125px;
+    height: calc(100% + (2 * var(--overflow)));
+    top: calc(-1 * var(--overflow));
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: 60% 0%;
+    will-change: transform;
+    filter: grayscale(0.2);
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__element {
+    height: $element-height;
+    width: 48%;
+    background-color: $background-color;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 0 0 20px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+    @include respond-to("medium") {
+      width: 35%;
+    }
+
+    @include respond-to("large") {
+      width: 29%;
+    }
+
+    @include respond-to("2extra-large") {
+      width: 20%;
+    }
+
+    .button {
+      z-index: 3;
+      margin-bottom: -0.5rem;
+      width: 45vw;
+
+      @include respond-to("medium") {
+        width: 30vw;
+      }
+
+      @include respond-to("large") {
+        width: 25vw;
+      }
+
+      @include respond-to("2extra-large") {
+        width: 18vw;
+      }
+    }
+  }
+
+  &__element::before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: 100%;
+    box-shadow: 20px -20px $background-color;
+  }
+
+  &__element::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    top: $element-height;
+    right: 0;
+    box-shadow: 25px -25px $background-color;
+  }
+
+  &__lower-element {
+    display: none;
+
+    @include respond-to("medium") {
+      display: block;
+      width: 42%;
+      background-color: $background-color;
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      border-radius: 0px 20px 0 0px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .tech-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 97%;
+      border-radius: 1rem;
+      color: $color-black-second;
+      gap: 2rem;
+      z-index: 10;
+      min-height: fit-content;
+      padding: 1rem 0;
+
+      h2 {
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        text-align: center;
+        border: 1px solid $color-grey-dark;
+        border-radius: 7rem;
+        padding: 0.5rem 2rem;
+        font-size: 0.9375rem;
+
+        @include respond-to("extra-large") {
+          font-size: 2rem;
+        }
+      }
+    }
+  }
+
+  &__lower-element::before {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    bottom: 100%;
+    left: 0px;
+    box-shadow: -20px 20px $background-color;
+  }
+
+  &__lower-element::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    box-shadow: -25px 25px $background-color;
+  }
+}

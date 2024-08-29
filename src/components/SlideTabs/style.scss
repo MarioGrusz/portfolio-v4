@@ -1,0 +1,100 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.menu {
+  opacity: 0;
+  &.open {
+    animation: fadeIn 2s 0.4s forwards;
+  }
+
+  &__container {
+    padding: 1rem 0;
+  }
+
+  &__list {
+    padding: 5px 1px;
+    border-radius: $border-radius-button;
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+
+    margin-inline: auto;
+    border: 1px solid $color-black;
+    width: 92%;
+
+    @include respond-to("small") {
+      width: 60%;
+    }
+
+    @include respond-to("medium") {
+      width: 50%;
+    }
+
+    @include respond-to("extra-large") {
+      width: 35%;
+    }
+
+    .tab {
+      pointer-events: all;
+      transition: 0.3s ease all;
+      mix-blend-mode: difference;
+      z-index: 1;
+      width: 5rem;
+      display: flex;
+      justify-content: center;
+
+      @include respond-to("small") {
+        width: 6rem;
+      }
+
+      @include respond-to("large") {
+        width: 7rem;
+      }
+
+      @include respond-to("2extra-large") {
+        width: 8rem;
+      }
+    }
+
+    .tab.active p {
+      color: $color-white;
+    }
+
+    p {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      pointer-events: none;
+
+      position: relative;
+      line-height: $line-height-tight;
+      text-align: center;
+      display: inline-block;
+      padding: 0.375rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: $color-black;
+      transition: 0.5s ease color;
+    }
+  }
+}
+
+.cursor {
+  position: absolute;
+  z-index: 0;
+  height: 1.9rem;
+  border-radius: 2.5rem;
+  background-color: $color-black;
+  opacity: 0;
+  top: 0.2rem;
+  margin-inline: auto;
+  transition: 0.3s ease all;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,113 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.accordions {
+  //width: 100%;
+  color: $color-black-second;
+  min-height: fit-content;
+  min-width: 100%;
+
+  @include respond-to("large") {
+    min-width: 90%;
+    width: 90%;
+  }
+
+  @include respond-to("extra-large") {
+    min-width: 80%;
+    width: 80%;
+  }
+}
+.accordion {
+  position: relative;
+  display: flex;
+  padding-top: 1rem;
+  flex-direction: column;
+
+  .header-textbtn-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+
+    h3 {
+      font-size: 2rem;
+      font-weight: 400;
+    }
+  }
+
+  .text-description-wrapper {
+    opacity: 0;
+    width: 100%;
+    padding-right: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .text-description {
+    max-width: 100%;
+    overflow: hidden;
+    max-width: 90%;
+    width: 100%;
+    height: 0rem;
+    transition: height 0.2s ease-in-out;
+
+    p {
+      font-size: 1rem;
+      line-height: 1.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .text-description-wrapper.open,
+  .text-description.open {
+    opacity: 1;
+    height: 12rem;
+    transition: height opacity 0.2s ease-in-out;
+  }
+
+  .button {
+    padding-right: 1rem;
+  }
+
+  .svg-plus.open {
+    opacity: 0;
+  }
+
+  .btns-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 0.35rem;
+    row-gap: 0.6rem;
+
+    p {
+      font-size: 1rem;
+      line-height: 1rem;
+      border-radius: 5rem;
+      border: 1px solid $color-grey-darker;
+      padding: 0.75rem 0.95rem;
+    }
+  }
+}
+
+.accordion::after {
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: $color-black-second;
+}
+
+.accordion:nth-child(1)::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: $color-black-second;
+}
