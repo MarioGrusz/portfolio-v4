@@ -80,7 +80,8 @@ export const projectsDetailsData = [
     id: 3,
     link: "/task-ease",
     title: "Task Ease",
-    oneLineDescription: "Web scraping app for coffee lovers.",
+    oneLineDescription:
+      "Web-based app designed to aid in the organization of learning activities.",
     liveSite: "https://taskease-app.netlify.app/",
     githubRepo: "https://github.com/MarioGrusz/task-ease-v2",
     introImage: introImageTaskEase,

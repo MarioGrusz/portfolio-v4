@@ -217,6 +217,83 @@
   &:first-child {
     background-color: $color-grey-light;
 
+    .element {
+      background-color: $background-color;
+      width: 25%;
+      height: 6rem;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-radius: 0px 0px 0px 50px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include respond-to("small") {
+        width: 15%;
+      }
+
+      @include respond-to("medium") {
+        width: 12%;
+      }
+
+      @include respond-to("extra-large") {
+        height: 7rem;
+        width: 8%;
+      }
+
+      @include respond-to("2extra-large") {
+        height: 8rem;
+        width: 8%;
+      }
+
+      .github {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: $color-yellow-green;
+        color: $color-black-second;
+        cursor: pointer;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        z-index: 10;
+        font-size: 0.8rem;
+        text-align: center;
+
+        @include respond-to("2extra-large") {
+          width: 6rem;
+          height: 6rem;
+        }
+      }
+    }
+
+    .element::before {
+      content: "";
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: transparent;
+      position: absolute;
+      top: 0;
+      right: 100%;
+      box-shadow: 20px -20px $background-color;
+    }
+
+    .element::after {
+      content: "";
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: transparent;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      box-shadow: 20px -20px $background-color;
+    }
+
     @include respond-to("large") {
       gap: 5rem;
     }

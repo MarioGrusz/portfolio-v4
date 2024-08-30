@@ -167,18 +167,18 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ data }) => {
             if (el) refs.current[0] = el;
           }}
         >
+          <div className="element">
+            <a
+              className="github"
+              href={data.githubRepo}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Github Repo
+            </a>
+          </div>
           <header className="content-sticky__header">
             <h1>OVERVIEW</h1>
-            <div className="project-details__element">
-              <a
-                className="live-project"
-                href={data.githubRepo}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Github Repo
-              </a>
-            </div>
           </header>
           <div className="content-sticky__accordion-wrapper">
             <Accordion accordionData={data.accordionData} />
