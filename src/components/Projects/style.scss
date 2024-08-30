@@ -85,7 +85,7 @@ $margin-padding: 0.5rem;
 
     margin: 0 auto;
     --aspect-ratio: 1;
-    padding-bottom: calc(80% / (var(--aspect-ratio)));
+    padding-top: calc(80% / (var(--aspect-ratio)));
 
     max-width: calc(100% - 2rem);
     will-change: transform;
@@ -112,6 +112,8 @@ $margin-padding: 0.5rem;
     filter: grayscale(0.2);
     background-size: cover;
     background-position: center;
+    transform: translateY(0);
+    transition: transform 0.1s linear;
   }
 
   &__element {

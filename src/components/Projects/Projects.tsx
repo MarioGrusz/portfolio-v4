@@ -1,22 +1,35 @@
 import "./style.scss";
-import { ReactNode, RefObject, useRef, forwardRef } from "react";
+import { ReactNode, RefObject, useRef, forwardRef, useEffect } from "react";
 import { projectsData } from "./projectsData";
 import Counter from "../Counter";
 import useInViewPort from "../../hooks/useInViewPort";
 import Button from "../Button";
 import { Link } from "react-router-dom";
+import gsap from "gsap";
+
+import { imagesParallaxAnimation } from "./animation";
 
 interface ProjectsProps {
-  imageRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
   projectsSectionRef?: RefObject<HTMLDivElement>;
 }
 
 const Projects = forwardRef<HTMLDivElement, ProjectsProps>(
-  ({ imageRefs, projectsSectionRef }, ref) => {
+  ({ projectsSectionRef }, ref) => {
     const firstRef = useRef<HTMLDivElement>(null);
     const secondRef = useRef<HTMLDivElement>(null);
     const thirdRef = useRef<HTMLDivElement>(null);
     const targetRefs = [firstRef, secondRef, thirdRef];
+
+    useEffect(() => {
+      const timeoutId = setTimeout(() => {
+        const elementsToAnimate =
+          gsap.utils.toArray<HTMLElement>(".projects__image");
+        imagesParallaxAnimation(elementsToAnimate);
+      }, 1000);
+
+      return () => clearTimeout(timeoutId); // Clean up the timeout on component unmount
+    }, []);
+
     const inViewport = useInViewPort(targetRefs, { threshold: 0.2 });
 
     const projects: ReactNode = projectsData.map((project, index) => (
@@ -40,7 +53,6 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(
           <div
             className="projects__image"
             style={{ backgroundImage: `url(${project.homeImage})` }}
-            ref={(el) => (imageRefs.current[index] = el)}
           />
         </div>
 
