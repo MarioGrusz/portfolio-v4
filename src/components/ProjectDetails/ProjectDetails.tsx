@@ -97,7 +97,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ data }) => {
   useEffect(() => {
     setTimeout(() => {
       setAnimate(true);
-    }, 600);
+    }, 500);
   }, []);
   return (
     <main className="project-details">

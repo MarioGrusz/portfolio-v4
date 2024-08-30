@@ -8,10 +8,10 @@ export const imagesParallaxAnimation = (
   elements.forEach((section) => {
     if (section && document.body.contains(section)) {
       gsap.set(section, {
-        yPercent: -5,
+        yPercent: -6,
       });
       gsap.to(section, {
-        yPercent: 5,
+        yPercent: 6,
         scrollTrigger: {
           trigger: section,
           start: "top bottom",
