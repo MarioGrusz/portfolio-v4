@@ -11,8 +11,6 @@ const ScrollIndicator = () => {
     ease: [0.76, 0, 0.24, 1],
   };
 
-  console.log(atBottom);
-
   const handleScroll = () => {
     const scrollTop = window.scrollY;
     const docHeight = document.documentElement.scrollHeight;
