@@ -85,9 +85,6 @@
     width: 100%;
     margin-top: 2rem;
 
-    transform: translateY(50%);
-    opacity: 0;
-
     @include respond-to("medium") {
       width: 95%;
     }
@@ -100,10 +97,6 @@
       width: 90%;
     }
 
-    &.scale {
-      animation: slideUp 0.7s forwards, fadeIn 0.9s forwards;
-    }
-
     img {
       object-fit: cover;
       width: 100%;
@@ -111,6 +104,12 @@
       aspect-ratio: 3 / 2;
       object-position: 50% 50%;
       height: 55vh;
+      clip-path: inset(100% 0 0 0);
+      transition: clip-path 1s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+
+    img.reveal {
+      clip-path: inset(0 0 0 0);
     }
   }
 

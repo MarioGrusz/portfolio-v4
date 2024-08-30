@@ -17,8 +17,6 @@ const MainPage: React.FC = () => {
   const projectsSectionRef = useRef<HTMLDivElement>(null);
   const contactSectionRef = useRef<HTMLDivElement>(null);
 
-  //const content = "Selected Works Selected Works Selected Works";
-
   const content = (
     <>
       <span className="text-block">Selected</span>

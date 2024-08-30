@@ -17,7 +17,7 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(
     const secondRef = useRef<HTMLDivElement>(null);
     const thirdRef = useRef<HTMLDivElement>(null);
     const targetRefs = [firstRef, secondRef, thirdRef];
-    const inViewport = useInViewPort(targetRefs, { threshold: 0.5 });
+    const inViewport = useInViewPort(targetRefs, { threshold: 0.2 });
 
     const projects: ReactNode = projectsData.map((project, index) => (
       <article

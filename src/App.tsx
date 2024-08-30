@@ -7,9 +7,11 @@ import PageTransition from "./components/PageTransition";
 import { useState, useEffect } from "react";
 import Preloader from "./components/Preloader";
 import { Helmet } from "react-helmet";
+import ScrollIndicator from "./components/ScrollIndicator";
 
 const MainPage = lazy(() => import("./pages/MainPage"));
 const ProjectDetails = lazy(() => import("./components/ProjectDetails"));
+const PageNotFound = lazy(() => import("./components/NotFound"));
 
 const App = () => {
   const location = useLocation();
@@ -109,6 +111,7 @@ const App = () => {
 
       <Suspense fallback={<div>Loading...</div>}>
         <AnimatePresence mode="wait" initial={false}>
+          <ScrollIndicator />
           <Routes location={location} key={location.pathname}>
             <Route
               path="/"
@@ -142,6 +145,7 @@ const App = () => {
                 </PageTransition>
               }
             />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </AnimatePresence>
       </Suspense>

@@ -74,6 +74,9 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ data }) => {
     ScrollTrigger.refresh();
   };
   useEffect(() => {
+    const img = new Image();
+    img.src = data.introImage;
+
     const triggerResize = () => {
       window.dispatchEvent(new Event("resize"));
     };
@@ -119,7 +122,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ data }) => {
                 key={index}
                 className={`mask large-title ${animate ? "open" : ""}`}
               >
-                <span style={{ animationDelay: `${0.05 * index}s` }}>
+                <span style={{ animationDelay: `${0.03 * index}s` }}>
                   {char === " " ? "\u00A0" : char}
                 </span>
               </span>
@@ -132,17 +135,19 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ data }) => {
                 key={index}
                 className={`mask lower-text ${animate ? "open" : ""}`}
               >
-                <span style={{ animationDelay: `${0.03 * index}s` }}>
+                <span style={{ animationDelay: `${0.02 * index}s` }}>
                   {word}
                 </span>
               </span>
             ))}
           </p>
         </div>
-        <div
-          className={`project-details__image-wrapper ${animate ? "scale" : ""}`}
-        >
-          <img src={data.introImage} alt="Introduction to the project" />
+        <div className={`project-details__image-wrapper`}>
+          <img
+            src={data.introImage}
+            alt="Introduction to the project"
+            className={`${animate ? "reveal" : ""}`}
+          />
           <div className="project-details__element">
             <a
               className="live-project"

@@ -1,0 +1,50 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.not-found {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__info {
+    margin-top: 3rem;
+    height: 50vh;
+    width: 95%;
+    max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+
+    @include respond-to("medium") {
+      width: 70%;
+    }
+
+    @include respond-to("extra-large") {
+      width: 60%;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 900;
+      text-transform: uppercase;
+
+      @include respond-to("extra-large") {
+        font-size: 2.5rem;
+      }
+    }
+
+    p {
+      max-width: 100%;
+      font-size: 1.1rem;
+      text-align: center;
+
+      @include respond-to("extra-large") {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

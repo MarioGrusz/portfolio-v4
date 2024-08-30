@@ -45,7 +45,6 @@ const Counter: React.FC<CounterProps> = ({ dataNumber, inViewport }) => {
                 <li ref={(el) => (liRefs.current[2] = el)}>3</li>
               </ul>
             </div>
-            {/* <div className="projects-counter__dot">.</div> */}
           </div>
         </div>
       </div>
