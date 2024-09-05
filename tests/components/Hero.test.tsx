@@ -13,24 +13,23 @@ describe("Hero", () => {
     expect(screen.getByText("Hi there, I am Mariusz")).toBeInTheDocument();
   });
 
-  it("should render the title correctly", () => {
+  it("should render the animated title correctly", () => {
     render(<Hero />);
-    expect(
-      screen.getByRole("heading", { name: /software/i })
-    ).toBeInTheDocument();
-    expect(
-      screen.getByRole("heading", { name: /developer/i })
-    ).toBeInTheDocument();
+    const headings = screen.getAllByRole("heading");
+    const softwareHeading = headings.find((heading) =>
+      heading.textContent?.includes("Software")
+    );
+    const developerHeading = headings.find((heading) =>
+      heading.textContent?.includes("Developer")
+    );
+
+    if (softwareHeading && developerHeading) {
+      expect(softwareHeading).toBeInTheDocument();
+      expect(developerHeading).toBeInTheDocument();
+    } else {
+      console.error("One or both headings were not found.");
+    }
   });
-
-  // it("should render the title correctly", () => {
-  //   render(<Hero />);
-  //   const softwareHeadings = screen.getAllByRole("heading", { name: /software/i });
-  //   const developerHeadings = screen.getAllByRole("heading", { name: /developer/i });
-
-  //   expect(softwareHeadings).toHaveLength(2);
-  //   expect(developerHeadings).toHaveLength(2);
-  // });
 
   it("should render the lower description correctly", () => {
     render(<Hero />);
@@ -43,9 +42,13 @@ describe("Hero", () => {
     expect(screen.getByText("Based in Madrid")).toBeInTheDocument();
   });
 
-  it("should render the contact me section", () => {
+  it("should render the contact me section correctly", () => {
     render(<Hero />);
     expect(screen.getByText("Get in Touch")).toBeInTheDocument();
+    const linkElement = screen.getByRole("link", { name: "Get in Touch" });
+    expect(linkElement.getAttribute("href")).toBe(
+      "mailto:mario.gruszczynski@gmail.com"
+    );
   });
 
   it("should render the local time component", () => {

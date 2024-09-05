@@ -1,13 +1,13 @@
 import "./style.scss";
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation, Link } from "react-router-dom";
-import Lenis from "lenis";
+import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import Accordion from "../Accordion";
 import Footer from "../Footer";
+import { useSmoothScrolling } from "../../hooks/useSmoothScroll";
 
 interface ProjectDetailsProps {
   data: {
@@ -36,69 +36,18 @@ interface ProjectDetailsProps {
 }
 
 const ProjectDetails: React.FC<ProjectDetailsProps> = ({ data }) => {
-  let lenis: any;
   const refs = useRef<HTMLElement[]>([]);
-  const { pathname } = useLocation();
   const [animate, setAnimate] = useState(false);
 
   const headerPhrase = "Design / Development";
-
-  const initSmoothScrolling = () => {
-    if (lenis) lenis.destroy();
-    lenis = new Lenis({
-      lerp: 0.2,
-      smoothWheel: true,
-    });
-    lenis.on("scroll", () => ScrollTrigger.update());
-    const scrollFn = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(scrollFn);
-    };
-    requestAnimationFrame(scrollFn);
-  };
-  const scroll = () => {
-    refs.current.forEach((el) => {
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: el,
-          start: "top top",
-          end: "+=100%",
-          scrub: true,
-        },
-      });
-    });
-  };
-  const init = () => {
-    initSmoothScrolling();
-    scroll();
-    ScrollTrigger.refresh();
-  };
-  useEffect(() => {
-    const img = new Image();
-    img.src = data.introImage;
-
-    const triggerResize = () => {
-      window.dispatchEvent(new Event("resize"));
-    };
-    const initAll = () => {
-      init();
-      ScrollTrigger.refresh();
-      triggerResize(); // Force a resize event after everything is initialized
-    };
-    initAll();
-    return () => {
-      if (lenis) {
-        lenis.destroy();
-      }
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, [pathname, refs]);
+  useSmoothScrolling();
 
   useEffect(() => {
     setTimeout(() => {
       setAnimate(true);
     }, 500);
   }, []);
+
   return (
     <main className="project-details">
       <section className="project-details__header" role="banner">

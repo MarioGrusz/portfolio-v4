@@ -2,7 +2,7 @@
 @import "../../styles/variables";
 
 .circular-indicator {
-  //display: none;
+  pointer-events: none;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -15,10 +15,6 @@
   justify-content: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 2000;
-
-  // @include respond-to("extra-large") {
-  //   display: flex;
-  // }
 }
 
 .indicator-circle {
@@ -51,6 +47,7 @@
 
 .inVisible {
   animation: fadeOut 0.5s forwards;
+  z-index: 0;
 }
 
 @keyframes fadeOut {
