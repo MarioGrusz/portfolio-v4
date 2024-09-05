@@ -28,11 +28,6 @@ const App = () => {
       hitType: "pageview",
       page: pagePath,
       title: "Portfolio Page",
-      dimensions: {
-        dimension1: "Visitor Traffic Source",
-        dimension2: "Visitor Location",
-        dimension3: "Visitor Device",
-      },
     });
   }, []);
 
