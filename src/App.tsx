@@ -25,7 +25,7 @@ const App = () => {
     ReactGA.initialize(trackingId);
     const pagePath = window.location.pathname;
     ReactGA.send({
-      hitType: "page_view",
+      hitType: "pageview",
       page: pagePath,
       title: "Portfolio Page",
       dimensions: {
