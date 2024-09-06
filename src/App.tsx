@@ -32,6 +32,14 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: location.pathname,
+      title: document.title,
+    });
+  }, [location]);
+
+  useEffect(() => {
     (async () => {
       setTimeout(() => {
         setIsLoading(false);
@@ -122,15 +130,15 @@ const App = () => {
               "@type": "Person",
               "name": "Mariusz Gruszczynski",
               "jobTitle": "Software Developer",
-               "description": "Software Developer with expertise in React, Node.js, and web development."
+              "description": "Software Developer with expertise in React, Node.js, and web development.",
               "url": "https://www.mariuszgruszczynski.com",
               "sameAs": [
-                "www.linkedin.com/in/mariusz-gruszczynski",
-                "https://github.com/MarioGrusz",
+                "https://www.linkedin.com/in/mariusz-gruszczynski",
+                "https://github.com/MarioGrusz"
               ],
-               "contactPoint": {
+              "contactPoint": {
                 "@type": "ContactPoint",
-                "email": "mario.gruszczynski@gmail.com",
+                "email": "mario.gruszczynski@gmail.com"
               }
             }
           `}
