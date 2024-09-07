@@ -60,41 +60,37 @@ const App = () => {
     <>
       <Helmet>
         {/* Basic SEO */}
-        <title>Mariusz Gruszczynski - Software Developer</title>
+        <title>Mariusz Gruszczynski • Software Developer</title>
         <meta
           name="description"
-          content="Mariusz Gruszczynski's portfolio showcasing projects in full-stack web development, React, Node, Typescript, Postgresql and more. Located in Spain."
-        />
-        <meta
-          name="keywords"
-          content="Mariusz Gruszczynski's portfolio showcasing projects in full-stack web development, React, Node, Typescript, Postgresql and more."
+          content="Bridging design and functionality with full-stack web development. Based in Madrid, Spain."
         />
 
         {/* Open Graph for social media */}
         <meta
           property="og:title"
-          content="Mariusz Gruszczynski - Software Developer"
+          content="Mariusz Gruszczynski • Software Developer"
         />
         <meta
           property="og:description"
-          content="Check out my projects and skills in full-stack web development using modern technologies like Typescript React and Node.js."
+          content="Discover my skills in combining design and functionality in full-stack web development using modern technologies like Typescript, React, and Node."
         />
         <meta
           property="og:image"
           content="https://www.mariuszgruszczynski.com/assets/thumbnail.jpg"
         />
-        <meta property="og:url" content="https://www.mariuszgruszczynski.com" />
-        <meta property="og:type" content="website" />
         <meta
           property="og:site_name"
-          content="Mariusz Gruszczynski - Software Developer"
+          content="Mariusz Gruszczynski • Software Developer"
         />
+        <meta property="og:locale" content="en" />
+        <meta property="og:type" content="website" />
 
         {/* Twitter Card for better Twitter sharing */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Mariusz Gruszczynski - Software Developer"
+          content="Mariusz Gruszczynski • Software Developer"
         />
         <meta
           name="twitter:description"
@@ -104,21 +100,10 @@ const App = () => {
           name="twitter:image"
           content="https://www.mariuszgruszczynski.com/assets/thumbnail.jpg"
         />
-        <meta name="twitter:site" content="@mariuszgruszczynski" />
-
-        {/* Additional Meta Tags */}
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content="Mariusz Gruszczynski" />
-        <link rel="canonical" href="https://www.mariuszgruszczynski.com" />
-
-        {/* Favicon */}
-        <link
-          rel="icon"
-          href="https://www.mariuszgruszczynski.com/favicon.ico"
-        />
-
-        {/* Viewport settings for mobile devices */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="google" content="notranslate" />
+        <meta property="og:locale" content="en" />
+        <link rel="canonical" href="https://mariuszgruszczynski.com" />
 
         <script type="application/ld+json"></script>
 

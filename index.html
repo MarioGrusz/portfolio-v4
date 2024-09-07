@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--  This site was coded by Mario  -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,6 +9,20 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
     <script type="module" src="/src/main.tsx"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-STH3BH5TKQ"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-STH3BH5TKQ");
+    </script>
   </body>
 </html>

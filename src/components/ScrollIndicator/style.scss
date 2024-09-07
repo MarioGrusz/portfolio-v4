@@ -42,7 +42,7 @@
   background-repeat: no-repeat;
   background-position: 50% 50%;
   background-size: cover;
-  animation: wave3d 2s infinite;
+  animation: waving 2s infinite;
 }
 
 .inVisible {
@@ -59,12 +59,27 @@
   }
 }
 
-@keyframes wave {
+@keyframes waving {
   0% {
     transform: rotate(0deg);
   }
+  10% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
   50% {
-    transform: rotate(10deg);
+    transform: rotate(8deg);
+  }
+  60% {
+    transform: rotate(0deg);
   }
   100% {
     transform: rotate(0deg);
