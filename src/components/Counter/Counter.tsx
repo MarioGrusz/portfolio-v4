@@ -42,7 +42,7 @@ const Counter: React.FC<CounterProps> = ({ dataNumber, inViewport }) => {
                 <li ref={(el) => (liRefs.current[0] = el)}>0</li>
                 <li ref={(el) => (liRefs.current[1] = el)}>1</li>
                 <li ref={(el) => (liRefs.current[2] = el)}>2</li>
-                <li ref={(el) => (liRefs.current[2] = el)}>3</li>
+                <li ref={(el) => (liRefs.current[3] = el)}>3</li>
               </ul>
             </div>
           </div>

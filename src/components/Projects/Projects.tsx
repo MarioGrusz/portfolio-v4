@@ -14,7 +14,7 @@ interface ProjectsProps {
 }
 
 const Projects = forwardRef<HTMLDivElement, ProjectsProps>(
-  ({ projectsSectionRef }, ref) => {
+  ({ projectsSectionRef }) => {
     const firstRef = useRef<HTMLDivElement>(null);
     const secondRef = useRef<HTMLDivElement>(null);
     const thirdRef = useRef<HTMLDivElement>(null);
@@ -27,20 +27,20 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(
         imagesParallaxAnimation(elementsToAnimate);
       }, 1000);
 
-      return () => clearTimeout(timeoutId); // Clean up the timeout on component unmount
+      return () => clearTimeout(timeoutId);
     }, []);
 
     const inViewport = useInViewPort(targetRefs, { threshold: 0.2 });
 
     const projects: ReactNode = projectsData.map((project, index) => (
       <article
-        ref={ref}
+        ref={targetRefs[index]}
         key={index}
         className="projects__container"
         style={{ backgroundColor: project.backgroundColor }}
       >
         <section className="projects__project-details">
-          <header className="projects__header" ref={targetRefs[index]}>
+          <header className="projects__header">
             <Counter dataNumber={index + 1} inViewport={inViewport} />
             <div className="projects__text-wrapper">
               <h2 className="title">{project.title}</h2>

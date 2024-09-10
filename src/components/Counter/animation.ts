@@ -1,4 +1,6 @@
 import { MutableRefObject } from "react";
+import gsap from "gsap";
+
 export const projectCounterAnimation = (
   numberRightRowRef: MutableRefObject<HTMLUListElement | null>,
   liRefs: MutableRefObject<(HTMLLIElement | null)[]>,
@@ -15,17 +17,29 @@ export const projectCounterAnimation = (
     console.warn("Invalid references, animation cannot proceed.");
     return;
   }
+
+  // Get element height
   const elementHeight =
     numberRightRowElements[0].getBoundingClientRect().height;
 
+  // Parse number and calculate translateY value
   const number = parseInt(numberRightRow.dataset.number || "0", 10);
   const translateYValue = -elementHeight * number;
 
+  // Apply initial state and animation using GSAP
   if (numberRightRow && index + 1 === number) {
-    const duration = 0.3 + index * 0.3;
-    numberRightRow.style.transition = `transform ${duration}s ease-in-out`;
-    numberRightRow.style.transform = `translateY(${translateYValue}px)`;
-  } else {
-    console.warn("No <ul> element found in numberRightRow.");
+    // Set initial state
+    gsap.set(numberRightRow, {
+      y: 0,
+    });
+
+    // Animate to target state
+    const duration = 0.4 + index * 0.2;
+    gsap.to(numberRightRow, {
+      duration,
+      delay: 0.1,
+      y: translateYValue,
+      ease: "power1.out",
+    });
   }
 };

@@ -335,6 +335,7 @@
     justify-content: center;
     align-items: flex-end;
     width: 80%;
+    height: 60vh;
     min-width: fit-content;
     padding-top: 1rem;
     margin-inline: auto;
@@ -354,11 +355,13 @@
     img {
       border-radius: 20px;
       object-fit: cover;
+      -webkit-object-fit: cover;
       width: 100%;
-      height: 100%;
-      aspect-ratio: 3 / 2;
-      object-position: 50% 50%;
-      height: 60vh;
+      height: 90%;
+      aspect-ratio: 16 / 9;
+
+      //aspect-ratio: 3 / 2;
+      //object-position: 50% 50%;
     }
   }
 

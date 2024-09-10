@@ -15,7 +15,7 @@ const Marquee: React.FC<MarqueeProps> = ({
   const animationDirection = isReverse ? "reverse" : "normal";
 
   const marqueeStyle = {
-    animation: `scroll ${animationTime} linear infinite`,
+    animation: `marquee ${animationTime} cubic-bezier(0.5, 0, 0.5, 1) infinite`,
     animationDirection: animationDirection,
   };
 

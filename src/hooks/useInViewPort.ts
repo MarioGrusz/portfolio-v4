@@ -47,7 +47,7 @@ function useInViewPort<T extends HTMLElement>(
         }
       });
     };
-  }, [options, refs]);
+  }, [options]);
 
   return inViewport;
 }

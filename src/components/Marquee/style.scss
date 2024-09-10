@@ -20,6 +20,7 @@
     flex: none;
     justify-content: space-around;
     display: flex;
+    will-change: transform;
   }
 
   &__text-block,
@@ -68,24 +69,11 @@
   }
 }
 
-// .scroll {
-//   animation: scroll linear infinite;
-// }
-
-// .reverse {
-//   animation-direction: reverse;
-// }
-
-// .marquee:hover .text-block .scroll {
-//   animation-play-state: paused;
-//   color: red;
-// }
-
-@keyframes scroll {
+@keyframes marquee {
   0% {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   100% {
-    transform: translateX(calc(-100% - 0.1rem));
+    transform: translate3d(-100%, 0, 0);
   }
 }

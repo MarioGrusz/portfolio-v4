@@ -14,7 +14,7 @@ const AboutMe = forwardRef<HTMLDivElement, AboutProps>((props) => {
 
   const description = useRef<HTMLDivElement>(null);
 
-  const isInView = useInViewPort([description], { threshold: 0.2 });
+  const isInView = useInViewPort([description], { threshold: 0.1 });
 
   return (
     <section id="about-me" className="about-me" ref={props.aboutSectionRef}>
