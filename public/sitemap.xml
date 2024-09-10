@@ -5,30 +5,25 @@
     <loc>https://mariuszgruszczynski.com/</loc>
     <lastmod>2024-09-05T16:42:39+01:00</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://mariuszgruszczynski.com/favicon.ico</loc>
-    <lastmod>2024-09-05T16:42:39+01:00</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://mariuszgruszczynski.com/hable-mas</loc>
     <lastmod>2024-09-05T16:42:39+01:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mariuszgruszczynski.com/bean-bazaar</loc>
     <lastmod>2024-09-05T16:42:39+01:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://mariuszgruszczynski.com/task-ease</loc>
     <lastmod>2024-09-05T16:42:39+01:00</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
   </url>
 </urlset>
+
