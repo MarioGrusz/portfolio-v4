@@ -77,7 +77,7 @@ const App = () => {
         />
         <meta
           property="og:image"
-          content="https://www.mariuszgruszczynski.com/assets/thumbnail.jpg"
+          content="https://www.mariuszgruszczynski.com/thumbnail.png"
         />
         <meta
           property="og:site_name"
@@ -98,7 +98,7 @@ const App = () => {
         />
         <meta
           name="twitter:image"
-          content="https://www.mariuszgruszczynski.com/assets/thumbnail.jpg"
+          content="https://www.mariuszgruszczynski.com/thumbnail.png"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="google" content="notranslate" />
