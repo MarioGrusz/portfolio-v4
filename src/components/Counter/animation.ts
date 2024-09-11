@@ -29,15 +29,15 @@ export const projectCounterAnimation = (
   // Apply initial state and animation using GSAP
   if (numberRightRow && index + 1 === number) {
     // Set initial state
-    gsap.set(numberRightRow, {
-      y: 0,
-    });
+    // gsap.set(numberRightRow, {
+    //   y: 0,
+    // });
 
     // Animate to target state
     const duration = 0.4 + index * 0.2;
     gsap.to(numberRightRow, {
       duration,
-      delay: 0.1,
+      delay: 0.2,
       y: translateYValue,
       ease: "power1.out",
     });

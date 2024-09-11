@@ -63,7 +63,7 @@ const App = () => {
         <title>Mariusz Gruszczynski • Software Developer</title>
         <meta
           name="description"
-          content="Bridging design and functionality with full-stack web development. Based in Madrid, Spain."
+          content="Software developer based in Madrid, crafting scalable websites, apps, and modern software solutions. Specializing in bridging design and functionality."
         />
 
         {/* Open Graph for social media */}
@@ -73,7 +73,7 @@ const App = () => {
         />
         <meta
           property="og:description"
-          content="Discover my skills in combining design and functionality in full-stack web development using modern technologies like Typescript, React, and Node."
+          content="Explore scalable web solutions that combine cutting-edge design and functionality. Specializing in React, TypeScript, and Node.js."
         />
         <meta
           property="og:image"
@@ -94,18 +94,14 @@ const App = () => {
         />
         <meta
           name="twitter:description"
-          content="Explore my portfolio to see my skills in React, Node.js, and full-stack development."
+          content="Discover the expertise of a full-stack developer, combining design and development in modern technologies like React, Node.js, and TypeScript."
         />
         <meta
           name="twitter:image"
           content="https://www.mariuszgruszczynski.com/thumbnail.png"
         />
-        <meta name="twitter:card" content="summary_large_image" />
         <meta name="google" content="notranslate" />
-        <meta property="og:locale" content="en" />
         <link rel="canonical" href="https://mariuszgruszczynski.com" />
-
-        <script type="application/ld+json"></script>
 
         {/* Schema.org for Google */}
         <script type="application/ld+json">
@@ -115,7 +111,7 @@ const App = () => {
               "@type": "Person",
               "name": "Mariusz Gruszczynski",
               "jobTitle": "Software Developer",
-              "description": "Software Developer with expertise in React, Node.js, and web development.",
+              "description": "Experienced in developing modern, scalable web applications and software solutions with a focus on design and functionality.",
               "url": "https://www.mariuszgruszczynski.com",
               "sameAs": [
                 "https://www.linkedin.com/in/mariusz-gruszczynski",

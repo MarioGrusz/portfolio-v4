@@ -53,7 +53,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ data }) => {
 
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
         <title>{data.title}</title>
         <meta
           name="description"
@@ -67,7 +67,37 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ data }) => {
           rel="canonical"
           href={`https://mariuszgruszczynski.com${location.pathname}`}
         />
+      </Helmet> */}
+      <Helmet>
+        <title>{data.title} - Project by Mariusz Gruszczynski</title>
+        <meta name="description" content={data.oneLineDescription} />
+        <link
+          rel="canonical"
+          href={`https://mariuszgruszczynski.com${data.nextProjectLink}`}
+        />
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "${data.title}",
+              "description": "${data.oneLineDescription}",
+              "url": "https://mariuszgruszczynski.com${data.nextProjectLink}",
+              "image": "${data.introImage}",
+              "author": {
+                "@type": "Person",
+                "name": "Mariusz Gruszczynski"
+              },
+              "isPartOf": {
+                "@type": "WebSite",
+                "url": "https://www.mariuszgruszczynski.com"
+              },
+              "@id": "https://mariuszgruszczynski.com${data.nextProjectLink}"
+            }
+          `}
+        </script>
       </Helmet>
+
       <main className="project-details">
         <section className="project-details__header" role="banner">
           <div className="project-details__text-container">
