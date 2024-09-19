@@ -22,12 +22,14 @@ const LocalTime: React.FC<LocalTimeProps> = ({ timeZone }) => {
       getLocalTime();
     }, 1000);
 
-    return () => {
-      clearInterval(interval);
-    };
+    return () => clearInterval(interval);
   }, [timeZone]);
 
-  return <div id="city-time">{localTime}</div>;
+  return (
+    <div id="city-time" aria-live="polite">
+      {localTime}
+    </div>
+  );
 };
 
 export default LocalTime;

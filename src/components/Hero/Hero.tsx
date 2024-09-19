@@ -60,6 +60,7 @@ const Hero = () => {
               xmlns="http://www.w3.org/2000/svg"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               viewBox="0 0 200 200"
+              aria-labelledby="location-description"
             >
               <g>
                 <path d="M100,200A100,100,0,1,1,200,100,100.11,100.11,0,0,1,100,200ZM100,7a93,93,0,1,0,93,93A93.07,93.07,0,0,0,100,7Z" />
@@ -111,6 +112,7 @@ const Hero = () => {
         <a
           href="mailto:mario.gruszczynski@gmail.com"
           className={`hero__contact-me ${animate ? "open" : ""}`}
+          aria-label="Contact Mariusz Gruszczynski"
         >
           <p>Get in Touch</p>
         </a>

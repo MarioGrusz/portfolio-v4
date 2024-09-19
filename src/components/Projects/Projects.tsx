@@ -38,6 +38,7 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(
         key={index}
         className="projects__container"
         style={{ backgroundColor: project.backgroundColor }}
+        aria-labelledby={`project-title-${index}`}
       >
         <section className="projects__project-details">
           <header className="projects__header">
@@ -53,12 +54,20 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(
           <div
             className="projects__image"
             style={{ backgroundImage: `url(${project.homeImage})` }}
+            aria-label={project.title}
           />
         </div>
 
         <div className="projects__element">
-          <Link to={project.projectDetails} className="button">
-            <Button text="see more" content="see more" />
+          <Link
+            to={project.projectDetails}
+            className="button"
+            aria-label={`Learn more about ${project.title}`}
+          >
+            <Button
+              text={`Learn more about ${project.title}`}
+              content={`Learn more about ${project.title}`}
+            />
           </Link>
         </div>
         <div className="projects__lower-element">

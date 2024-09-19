@@ -13,10 +13,14 @@ interface FooterProps {
 const Footer = forwardRef<HTMLDivElement, FooterProps>((props, ref) => {
   const currentYear = getYear();
 
-  const handleScrollToSection = (ref: any) => {
-    const rect = ref.current.getBoundingClientRect();
-    const scrollTop = rect.top + window.scrollY;
-    window.scrollTo({ top: scrollTop, behavior: "smooth" });
+  const handleScrollToSection = (
+    ref: RefObject<HTMLDivElement> | undefined
+  ) => {
+    if (ref && ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      const scrollTop = rect.top + window.scrollY;
+      window.scrollTo({ top: scrollTop, behavior: "smooth" });
+    }
   };
 
   return (
@@ -119,11 +123,11 @@ const Footer = forwardRef<HTMLDivElement, FooterProps>((props, ref) => {
           </div>
         </section>
         <div className="footer__element">
-          <button>
-            <Link
-              to="#hero"
-              onClick={() => handleScrollToSection(props.topSectionRef)}
-            >
+          <button
+            onClick={() => handleScrollToSection(props.topSectionRef)}
+            aria-label="Scroll to top section"
+          >
+            <Link to="#hero" aria-hidden="true">
               <svg
                 className="arrow-bounce"
                 viewBox="0 0 29 42"

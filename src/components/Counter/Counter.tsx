@@ -1,5 +1,5 @@
 import "./style.scss";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useCallback } from "react";
 import { projectCounterAnimation } from "./animation";
 
 interface CounterProps {
@@ -12,13 +12,17 @@ const Counter: React.FC<CounterProps> = ({ dataNumber, inViewport }) => {
   const numberRightRowRef = useRef<HTMLUListElement>(null);
   const liRefs = useRef<(HTMLLIElement | null)[]>([]);
 
-  useEffect(() => {
+  const animateCounter = useCallback(() => {
     inViewport.forEach((isInView, index) => {
       if (isInView) {
         projectCounterAnimation(numberRightRowRef, liRefs, index);
       }
     });
   }, [inViewport]);
+
+  useEffect(() => {
+    animateCounter();
+  }, [animateCounter]);
   return (
     <section className="projects-counter">
       <div className="projects-counter__number-row" ref={numberContainerRef}>
@@ -26,6 +30,9 @@ const Counter: React.FC<CounterProps> = ({ dataNumber, inViewport }) => {
           <div
             className="projects-counter__number-box"
             data-number={dataNumber}
+            role="text"
+            aria-live="polite"
+            aria-label={`Project count: ${dataNumber}`}
           >
             <div className="projects-counter__number">
               <ul className="projects-counter__first-list">

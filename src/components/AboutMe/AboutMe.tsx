@@ -1,5 +1,5 @@
 import "./style.scss";
-import { forwardRef, RefObject, useRef } from "react";
+import { forwardRef, RefObject, useMemo, useRef } from "react";
 import useInViewPort from "../../hooks/useInViewPort";
 
 interface AboutProps {
@@ -7,10 +7,16 @@ interface AboutProps {
 }
 
 const AboutMe = forwardRef<HTMLDivElement, AboutProps>((props) => {
-  const secondPhrase = `I use Typescript and React to build interfaces, and Node for backend stuff. To see if everything works as supposed to I test it with Vitest and Playwright. I like use Postgres for data and services like Netlify, Railway or AWS when it's time to get everything live.`;
-
-  const firstPhrase = `I am passionate developer, who creates
- modern software solutions, websites, apps. I design, build and test scalable products. In my work I connect modern design and functionality.`;
+  const firstPhrase = useMemo(
+    () =>
+      `I am passionate developer, who creates modern software solutions, websites, apps. I design, build and test scalable products. In my work I connect modern design and functionality.`,
+    []
+  );
+  const secondPhrase = useMemo(
+    () =>
+      `I use Typescript and React to build interfaces, and Node for backend stuff. To see if everything works as supposed to I test it with Vitest and Playwright. I like use Postgres for data and services like Netlify, Railway or AWS when it's time to get everything live.`,
+    []
+  );
 
   const description = useRef<HTMLDivElement>(null);
 
@@ -19,10 +25,19 @@ const AboutMe = forwardRef<HTMLDivElement, AboutProps>((props) => {
   return (
     <section id="about-me" className="about-me" ref={props.aboutSectionRef}>
       <main className="about-me__container">
-        <div className="about-me__header">
+        <header className="about-me__header">
           <div className="about-me__svg">
-            <div className="monster-image"></div>
-            <svg className="svg" viewBox="0 0 100 100" overflow="visible">
+            <div
+              className="monster-image"
+              role="img"
+              aria-label="Monster illustration"
+            ></div>
+            <svg
+              className="svg"
+              viewBox="0 0 100 100"
+              overflow="visible"
+              aria-hidden="true"
+            >
               <path
                 id="curve-wnxkz4"
                 d="M 0 50 L 0 50 A 1 1 0 0 1 100 50 L 100 50 L 100 50 A 1 1 0 0 1 0 50 L 0 50"
@@ -40,8 +55,8 @@ const AboutMe = forwardRef<HTMLDivElement, AboutProps>((props) => {
               </text>
             </svg>
           </div>
-        </div>
-        <div className="about-me__description">
+        </header>
+        <article className="about-me__description">
           <div className="about-me__body" ref={description}>
             <p>
               {firstPhrase.split(" ").map((word, index) => (
@@ -66,7 +81,7 @@ const AboutMe = forwardRef<HTMLDivElement, AboutProps>((props) => {
               ))}
             </p>
           </div>
-        </div>
+        </article>
       </main>
     </section>
   );

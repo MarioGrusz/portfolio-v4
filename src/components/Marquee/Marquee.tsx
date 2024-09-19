@@ -20,8 +20,8 @@ const Marquee: React.FC<MarqueeProps> = ({
   };
 
   return (
-    <section className="marquee">
-      <div className="element-front"></div>
+    <section className="marquee" aria-label="Scrolling content">
+      <div className="element-front" />
       <div
         className={`marquee__content ${isReverse ? "reverse" : ""}`}
         style={marqueeStyle}
@@ -34,7 +34,7 @@ const Marquee: React.FC<MarqueeProps> = ({
       >
         <div className="marquee__text-block">{content} &nbsp;&nbsp;</div>
       </div>
-      <div className="element-back"></div>
+      <div className="element-back" />
     </section>
   );
 };

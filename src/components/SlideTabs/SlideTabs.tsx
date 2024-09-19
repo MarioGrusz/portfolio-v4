@@ -18,10 +18,12 @@ interface SlideTabsProps {
 }
 
 const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
-  (
-    { contactSectionRef, aboutSectionRef, projectsSectionRef, topSectionRef },
-    ref
-  ) => {
+  ({
+    contactSectionRef,
+    aboutSectionRef,
+    projectsSectionRef,
+    topSectionRef,
+  }) => {
     const [animate, setAnimate] = useState(false);
     const firstChildRef = useRef<HTMLAnchorElement>(null);
     const [position, setPosition] = useState<Position>({
@@ -101,37 +103,56 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
     return (
       <section className={`menu ${animate ? "open" : ""}`} ref={topSectionRef}>
         <div className="menu__container" ref={tabsRef}>
-          <div className="menu__list" ref={ref}>
-            <Link
-              ref={firstChildRef}
-              to="#about-me"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onClick={() => handleScrollToSection(aboutSectionRef)}
-              className="tab"
-            >
-              <p>about</p>
-            </Link>
-            <Link
-              to="#projects"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              className="tab"
-              onClick={() => handleScrollToSection(projectsSectionRef)}
-            >
-              <p>projects</p>
-            </Link>
-            <Link
-              to="#contact"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-              onClick={() => handleScrollToSection(contactSectionRef)}
-              className="tab"
-            >
-              <p>contact</p>
-            </Link>
+          <ul
+            className="menu__list"
+            role="tablist"
+            aria-label="Navigation Tabs"
+          >
+            <li>
+              <Link
+                ref={firstChildRef}
+                to="#about-me"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => handleScrollToSection(aboutSectionRef)}
+                className="tab"
+                role="tab"
+                aria-selected={activeTab === firstChildRef.current}
+                aria-controls="about-me-section"
+              >
+                <p>about</p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="#projects"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="tab"
+                onClick={() => handleScrollToSection(projectsSectionRef)}
+                role="tab"
+                aria-selected={activeTab === firstChildRef.current}
+                aria-controls="projects-section"
+              >
+                <p>projects</p>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="#contact"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => handleScrollToSection(contactSectionRef)}
+                className="tab"
+                role="tab"
+                aria-selected={activeTab === firstChildRef.current}
+                aria-controls="contact-section"
+              >
+                <p>contact</p>
+              </Link>
+            </li>
             <Cursor position={position} />
-          </div>
+          </ul>
         </div>
       </section>
     );

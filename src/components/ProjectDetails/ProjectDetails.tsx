@@ -53,21 +53,6 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ data }) => {
 
   return (
     <>
-      {/* <Helmet>
-        <title>{data.title}</title>
-        <meta
-          name="description"
-          content={`Explore the details of ${data.title} by Mariusz Gruszczynski. Learn about the project's objectives, technologies used, and the impact it has made.`}
-        />
-        <meta
-          name="keywords"
-          content={`${data.title}, full-stack development, web development, React, Node.js, Typescript, Postgresql`}
-        />
-        <link
-          rel="canonical"
-          href={`https://mariuszgruszczynski.com${location.pathname}`}
-        />
-      </Helmet> */}
       <Helmet>
         <title>{data.title} - Project by Mariusz Gruszczynski</title>
         <meta name="description" content={data.oneLineDescription} />
@@ -145,6 +130,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ data }) => {
               src={data.introImage}
               alt="Introduction to the project"
               className={`${animate ? "reveal" : ""}`}
+              loading="lazy"
             />
             <div className="project-details__element">
               <a

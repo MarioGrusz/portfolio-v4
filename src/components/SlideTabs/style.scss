@@ -38,7 +38,7 @@
       pointer-events: all;
       transition: 0.3s ease all;
       mix-blend-mode: difference;
-      z-index: 1;
+      z-index: 100;
       width: 5rem;
       display: flex;
       justify-content: center;
@@ -80,7 +80,7 @@
 
 .cursor {
   position: absolute;
-  z-index: 0;
+  z-index: -1;
   height: 1.9rem;
   border-radius: 2.5rem;
   background-color: $color-black;

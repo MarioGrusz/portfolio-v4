@@ -45,12 +45,13 @@ const Accordion: React.FC<AccordionProps> = ({ accordionData }) => {
       <div className="accordion">
         <div className="header-textbtn-wrapper">
           <h3>{accordionData.problemHeader}</h3>
-          <div
+          <button
+            aria-controls="problem-content"
             className="button"
             onClick={() => handleClick(accordionData.problemId)}
           >
             <Icon isOpen={selected === accordionData.problemId} />
-          </div>
+          </button>
         </div>
 
         <AnimateHeight
@@ -76,12 +77,13 @@ const Accordion: React.FC<AccordionProps> = ({ accordionData }) => {
       <div className="accordion">
         <div className="header-textbtn-wrapper">
           <h3>{accordionData.solutionHeader}</h3>
-          <div
+          <button
+            aria-controls="problem-content"
             className="button"
             onClick={() => handleClick(accordionData.solutionId)}
           >
             <Icon isOpen={selected === accordionData.solutionId} />
-          </div>
+          </button>
         </div>
         <AnimateHeight
           duration={500}
@@ -106,12 +108,13 @@ const Accordion: React.FC<AccordionProps> = ({ accordionData }) => {
       <div className="accordion">
         <div className="header-textbtn-wrapper">
           <h3>{accordionData.architectureHeader}</h3>
-          <div
+          <button
+            aria-controls="problem-content"
             className="button"
             onClick={() => handleClick(accordionData.architectureId)}
           >
             <Icon isOpen={selected === accordionData.architectureId} />
-          </div>
+          </button>
         </div>
         <AnimateHeight
           duration={500}
