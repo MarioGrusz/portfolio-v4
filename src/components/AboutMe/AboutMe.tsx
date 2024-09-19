@@ -1,6 +1,7 @@
 import "./style.scss";
 import { forwardRef, RefObject, useMemo, useRef } from "react";
 import useInViewPort from "../../hooks/useInViewPort";
+import monsterImage from "../../assets/monster.png";
 
 interface AboutProps {
   aboutSectionRef?: RefObject<HTMLDivElement>;
@@ -27,11 +28,13 @@ const AboutMe = forwardRef<HTMLDivElement, AboutProps>((props) => {
       <main className="about-me__container">
         <header className="about-me__header">
           <div className="about-me__svg">
-            <div
+            <img
+              src={monsterImage}
               className="monster-image"
-              role="img"
+              alt="Monster illustration"
               aria-label="Monster illustration"
-            ></div>
+              loading="lazy"
+            ></img>
             <svg
               className="svg"
               viewBox="0 0 100 100"
