@@ -64,6 +64,7 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(
             aria-label={`Learn more about ${project.title}`}
           >
             <Button text="see more" content="see more" />
+            <span className="sr-only"> about {project.title}</span>
           </Link>
         </div>
         <div className="projects__lower-element">

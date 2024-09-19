@@ -123,7 +123,9 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
           >
             <li
               role="tab"
-              aria-selected={activeTab === firstChildRef.current}
+              aria-selected={
+                activeTab === firstChildRef.current ? "true" : "false"
+              }
               aria-controls="about-me-section"
             >
               <Link
@@ -139,7 +141,9 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
             </li>
             <li
               role="tab"
-              aria-selected={activeTab?.dataset.tab === "projects"}
+              aria-selected={
+                activeTab?.dataset.tab === "projects" ? "true" : "false"
+              }
               aria-controls="projects-section"
             >
               <Link
@@ -154,7 +158,9 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
             </li>
             <li
               role="tab"
-              aria-selected={activeTab?.dataset.tab === "contact"}
+              aria-selected={
+                activeTab?.dataset.tab === "contact" ? "true" : "false"
+              }
               aria-controls="contact-section"
             >
               <Link
