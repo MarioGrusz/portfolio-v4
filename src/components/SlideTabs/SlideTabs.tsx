@@ -114,12 +114,12 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
     };
 
     return (
-      <section className={`menu ${animate ? "open" : ""}`} ref={topSectionRef}>
-        <div className="menu__container" ref={tabsRef}>
+      <menu className={`menu ${animate ? "open" : ""}`} ref={topSectionRef}>
+        <nav className="menu__container" ref={tabsRef}>
           <ul
             className="menu__list"
             role="tablist"
-            aria-label="Navigation Tabs"
+            aria-label="Main Navigation"
           >
             <li
               role="tab"
@@ -167,12 +167,12 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
                 <p>contact</p>
               </Link>
             </li>
-            <li>
+            <li role="tab">
               <Cursor position={position} />
             </li>
           </ul>
-        </div>
-      </section>
+        </nav>
+      </menu>
     );
   }
 );

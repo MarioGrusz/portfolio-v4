@@ -54,7 +54,6 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(
           <div
             className="projects__image"
             style={{ backgroundImage: `url(${project.homeImage})` }}
-            aria-label={project.title}
           />
         </div>
 
