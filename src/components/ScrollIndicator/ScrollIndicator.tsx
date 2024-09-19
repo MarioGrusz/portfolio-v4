@@ -43,7 +43,7 @@ const ScrollIndicator = () => {
       transition={transitionSettings}
       className={`circular-indicator ${atBottom ? "inVisible" : ""}`}
       aria-live="polite"
-      role="scroll indicator"
+      role="status"
       style={{ willChange: "opacity, transform" }}
     >
       <div
