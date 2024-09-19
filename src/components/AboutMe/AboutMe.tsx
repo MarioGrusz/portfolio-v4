@@ -47,7 +47,7 @@ const AboutMe = forwardRef<HTMLDivElement, AboutProps>((props) => {
                 strokeWidth="none"
                 fill="transparent"
               ></path>
-              {/* <text>
+              <text>
                 <textPath
                   href="#curve-wnxkz4"
                   startOffset="0"
@@ -55,7 +55,7 @@ const AboutMe = forwardRef<HTMLDivElement, AboutProps>((props) => {
                 >
                   ABOUT ME ✤✤ SERVICES ✤✤
                 </textPath>
-              </text> */}
+              </text>
             </svg>
           </div>
         </header>
