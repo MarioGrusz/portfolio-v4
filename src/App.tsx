@@ -59,6 +59,20 @@ const App = () => {
   return (
     <>
       <Helmet>
+        {/* Preconnect to Google Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+
+        {/* Load Google Fonts asynchronously */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+          rel="stylesheet"
+        />
+
         {/* Basic SEO */}
         <title>Mariusz Gruszczynski • Software Developer</title>
         <meta
@@ -122,6 +136,20 @@ const App = () => {
                 "email": "mario.gruszczynski@gmail.com"
               }
             }
+          `}
+        </script>
+
+        {/* Google Tag Manager */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-STH3BH5TKQ"
+        ></script>
+        <script>
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-STH3BH5TKQ');
           `}
         </script>
       </Helmet>
