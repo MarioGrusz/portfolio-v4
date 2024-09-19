@@ -112,7 +112,7 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
             role="tablist"
             aria-label="Navigation Tabs"
           >
-            <li>
+            <li role="tab">
               <Link
                 ref={firstChildRef}
                 to="#about-me"
@@ -120,35 +120,32 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
                 onMouseLeave={handleMouseLeave}
                 onClick={() => handleScrollToSection(aboutSectionRef)}
                 className="tab"
-                role="tab"
                 aria-selected={activeTab === firstChildRef.current}
                 aria-controls="about-me-section"
               >
                 <p>about</p>
               </Link>
             </li>
-            <li>
+            <li role="tab">
               <Link
                 to="#projects"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 className="tab"
                 onClick={() => handleScrollToSection(projectsSectionRef)}
-                role="tab"
                 aria-selected={activeTab?.dataset.tab === "projects"}
                 aria-controls="projects-section"
               >
                 <p>projects</p>
               </Link>
             </li>
-            <li>
+            <li role="tab">
               <Link
                 to="#contact"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => handleScrollToSection(contactSectionRef)}
                 className="tab"
-                role="tab"
                 aria-selected={activeTab?.dataset.tab === "contact"}
                 aria-controls="contact-section"
               >
