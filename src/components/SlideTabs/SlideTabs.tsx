@@ -45,10 +45,10 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
       setAnimate(true);
     }, []);
 
-    const [activeTab, setActiveTab] = useState<HTMLElement | null>(null);
+    const [activeTab, setActiveTab] = useState<HTMLAnchorElement | null>(null);
     const tabsRef = useRef<HTMLDivElement>(null);
 
-    const getTabPosition = (el: HTMLElement | null) => {
+    const getTabPosition = (el: HTMLAnchorElement | null) => {
       if (el) {
         const { width } = el.getBoundingClientRect();
         setPosition({ left: el.offsetLeft, width, opacity: 1 });
@@ -67,16 +67,20 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
       debounce(() => {
         const activeTab = document.querySelector(".tab.active");
         if (activeTab) {
-          getTabPosition(activeTab as HTMLElement);
+          getTabPosition(activeTab as HTMLAnchorElement);
         }
       }, 50),
       []
     );
 
-    const handleScrollToSection = (ref: any) => {
-      const rect = ref.current.getBoundingClientRect();
-      const scrollTop = rect.top + window.scrollY;
-      window.scrollTo({ top: scrollTop, behavior: "smooth" });
+    const handleScrollToSection = (
+      ref: React.RefObject<HTMLDivElement> | undefined
+    ) => {
+      if (ref?.current) {
+        const rect = ref.current.getBoundingClientRect();
+        const scrollTop = rect.top + window.scrollY;
+        window.scrollTo({ top: scrollTop, behavior: "smooth" });
+      }
     };
 
     useEffect(() => {
@@ -131,7 +135,7 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
                 className="tab"
                 onClick={() => handleScrollToSection(projectsSectionRef)}
                 role="tab"
-                aria-selected={activeTab === firstChildRef.current}
+                aria-selected={activeTab?.dataset.tab === "projects"}
                 aria-controls="projects-section"
               >
                 <p>projects</p>
@@ -145,13 +149,15 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
                 onClick={() => handleScrollToSection(contactSectionRef)}
                 className="tab"
                 role="tab"
-                aria-selected={activeTab === firstChildRef.current}
+                aria-selected={activeTab?.dataset.tab === "contact"}
                 aria-controls="contact-section"
               >
                 <p>contact</p>
               </Link>
             </li>
-            <Cursor position={position} />
+            <li>
+              <Cursor position={position} />
+            </li>
           </ul>
         </div>
       </section>
@@ -166,7 +172,7 @@ const Cursor = ({ position }: { position: Position }) => {
     opacity: position.opacity,
   };
 
-  return <li className="cursor" style={cursorStyle}></li>;
+  return <div className="cursor" style={cursorStyle}></div>;
 };
 
 export default SlideTabs;
