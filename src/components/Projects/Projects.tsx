@@ -54,6 +54,7 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(
           <div
             className="projects__image"
             style={{ backgroundImage: `url(${project.homeImage})` }}
+            aria-label={project.title}
           />
         </div>
 
@@ -63,10 +64,7 @@ const Projects = forwardRef<HTMLDivElement, ProjectsProps>(
             className="button"
             aria-label={`Learn more about ${project.title}`}
           >
-            <Button
-              text={`Learn more about ${project.title}`}
-              content={`Learn more about ${project.title}`}
-            />
+            <Button text="see more" content="see more" />
           </Link>
         </div>
         <div className="projects__lower-element">

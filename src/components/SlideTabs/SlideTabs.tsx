@@ -1,5 +1,12 @@
 import "./style.scss";
-import { useState, useEffect, useRef, useCallback, forwardRef } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  forwardRef,
+  useMemo,
+} from "react";
 import { debounce } from "../../utils/debounce";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -31,6 +38,7 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
       width: 0,
       opacity: 0,
     });
+    const [activeTab, setActiveTab] = useState<HTMLAnchorElement | null>(null);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -45,15 +53,14 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
       setAnimate(true);
     }, []);
 
-    const [activeTab, setActiveTab] = useState<HTMLAnchorElement | null>(null);
     const tabsRef = useRef<HTMLDivElement>(null);
 
-    const getTabPosition = (el: HTMLAnchorElement | null) => {
+    const getTabPosition = useCallback((el: HTMLAnchorElement | null) => {
       if (el) {
         const { width } = el.getBoundingClientRect();
         setPosition({ left: el.offsetLeft, width, opacity: 1 });
       }
-    };
+    }, []);
 
     useEffect(() => {
       if (firstChildRef.current) {
@@ -61,27 +68,29 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
         getTabPosition(firstChildRef.current);
         firstChildRef.current.classList.add("active");
       }
-    }, []);
+    }, [getTabPosition]);
 
-    const handleResize = useCallback(
-      debounce(() => {
-        const activeTab = document.querySelector(".tab.active");
-        if (activeTab) {
-          getTabPosition(activeTab as HTMLAnchorElement);
-        }
-      }, 50),
-      []
+    const handleResize = useMemo(
+      () =>
+        debounce(() => {
+          const activeTab = document.querySelector(".tab.active");
+          if (activeTab) {
+            getTabPosition(activeTab as HTMLAnchorElement);
+          }
+        }, 50),
+      [getTabPosition]
     );
 
-    const handleScrollToSection = (
-      ref: React.RefObject<HTMLDivElement> | undefined
-    ) => {
-      if (ref?.current) {
-        const rect = ref.current.getBoundingClientRect();
-        const scrollTop = rect.top + window.scrollY;
-        window.scrollTo({ top: scrollTop, behavior: "smooth" });
-      }
-    };
+    const handleScrollToSection = useCallback(
+      (ref: React.RefObject<HTMLDivElement> | undefined) => {
+        if (ref?.current) {
+          const rect = ref.current.getBoundingClientRect();
+          const scrollTop = rect.top + window.scrollY;
+          window.scrollTo({ top: scrollTop, behavior: "smooth" });
+        }
+      },
+      []
+    );
 
     useEffect(() => {
       window.addEventListener("resize", handleResize);
@@ -112,7 +121,11 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
             role="tablist"
             aria-label="Navigation Tabs"
           >
-            <li role="tab">
+            <li
+              role="tab"
+              aria-selected={activeTab === firstChildRef.current}
+              aria-controls="about-me-section"
+            >
               <Link
                 ref={firstChildRef}
                 to="#about-me"
@@ -120,34 +133,36 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
                 onMouseLeave={handleMouseLeave}
                 onClick={() => handleScrollToSection(aboutSectionRef)}
                 className="tab"
-                aria-selected={activeTab === firstChildRef.current}
-                aria-controls="about-me-section"
               >
                 <p>about</p>
               </Link>
             </li>
-            <li role="tab">
+            <li
+              role="tab"
+              aria-selected={activeTab?.dataset.tab === "projects"}
+              aria-controls="projects-section"
+            >
               <Link
                 to="#projects"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 className="tab"
                 onClick={() => handleScrollToSection(projectsSectionRef)}
-                aria-selected={activeTab?.dataset.tab === "projects"}
-                aria-controls="projects-section"
               >
                 <p>projects</p>
               </Link>
             </li>
-            <li role="tab">
+            <li
+              role="tab"
+              aria-selected={activeTab?.dataset.tab === "contact"}
+              aria-controls="contact-section"
+            >
               <Link
                 to="#contact"
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
                 onClick={() => handleScrollToSection(contactSectionRef)}
                 className="tab"
-                aria-selected={activeTab?.dataset.tab === "contact"}
-                aria-controls="contact-section"
               >
                 <p>contact</p>
               </Link>
@@ -163,11 +178,14 @@ const SlideTabs = forwardRef<HTMLDivElement, SlideTabsProps>(
 );
 
 const Cursor = ({ position }: { position: Position }) => {
-  const cursorStyle = {
-    left: position.left,
-    width: position.width,
-    opacity: position.opacity,
-  };
+  const cursorStyle = useMemo(
+    () => ({
+      left: position.left,
+      width: position.width,
+      opacity: position.opacity,
+    }),
+    [position]
+  );
 
   return <div className="cursor" style={cursorStyle}></div>;
 };
