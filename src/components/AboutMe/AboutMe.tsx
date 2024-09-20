@@ -2,6 +2,7 @@ import "./style.scss";
 import { forwardRef, RefObject, useMemo, useRef } from "react";
 import useInViewPort from "../../hooks/useInViewPort";
 import monsterImage from "../../assets/monster.png";
+import aboutMeImage from "../../assets/about.png";
 
 interface AboutProps {
   aboutSectionRef?: RefObject<HTMLDivElement>;
@@ -35,28 +36,13 @@ const AboutMe = forwardRef<HTMLDivElement, AboutProps>((props) => {
               aria-label="Monster illustration"
               loading="lazy"
             ></img>
-            <svg
-              className="svg"
-              viewBox="0 0 100 100"
-              overflow="visible"
-              aria-hidden="true"
-            >
-              <path
-                id="curve-wnxkz4"
-                d="M 0 50 L 0 50 A 1 1 0 0 1 100 50 L 100 50 L 100 50 A 1 1 0 0 1 0 50 L 0 50"
-                strokeWidth="none"
-                fill="transparent"
-              ></path>
-              <text>
-                <textPath
-                  href="#curve-wnxkz4"
-                  startOffset="0"
-                  dominantBaseline="Text Top"
-                >
-                  ABOUT ME ✤✤ SERVICES ✤✤
-                </textPath>
-              </text>
-            </svg>
+            <img
+              src={aboutMeImage}
+              className="about-me-image"
+              alt="Monster illustration"
+              aria-label="Monster illustration"
+              loading="lazy"
+            ></img>
           </div>
         </header>
         <article className="about-me__description">
