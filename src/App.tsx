@@ -155,7 +155,7 @@ const App = () => {
         </script>
       </Helmet>
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense>
         <AnimatePresence mode="wait" initial={false}>
           <ScrollIndicator />
           <Routes location={location} key={location.pathname}>

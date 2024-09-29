@@ -38,7 +38,7 @@ const MainPage: React.FC = () => {
   return (
     <main className="main-container">
       <div className="scrollable" ref={scrollableRef}>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense>
           <SlideTabs
             contactSectionRef={contactSectionRef}
             aboutSectionRef={aboutSectionRef}
